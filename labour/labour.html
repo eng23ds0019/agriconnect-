@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hire Labour - AgriConnect</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4fdf4;
+        }
+        header {
+            background-color: #2e7d32;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+        header img {
+            height: 60px;
+        }
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+        header p {
+            font-size: 1.2em;
+            margin: 0;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background: #388e3c;
+            flex-wrap: wrap;
+        }
+        nav ul li {
+            margin: 15px 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ffd54f;
+        }
+        .container {
+            padding: 40px 20px;
+            text-align: center;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .container h2 {
+            font-size: 2.2em;
+            color: #2e7d32;
+            margin-bottom: 20px;
+        }
+        .two-column-layout {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .labour-list, .registration-form {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 300px;
+        }
+        .labour-list h3, .registration-form h3 {
+            color: #388e3c;
+            font-size: 1.8em;
+            margin-top: 0;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        #labour-cards-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .labour-card {
+            background: #e8f5e9;
+            border-left: 5px solid #66bb6a;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+            position: relative;
+        }
+        .labour-card .status {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff9800;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8em;
+        }
+        .labour-card h4 {
+            margin: 0 0 10px 0;
+            color: #1b5e20;
+            font-size: 1.5em;
+        }
+        .labour-card p {
+            margin: 5px 0;
+            color: #4a4a4a;
+        }
+        .labour-card .price {
+            font-weight: bold;
+            color: #c62828;
+            font-size: 1.1em;
+        }
+        .labour-card button {
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        .labour-card button:hover {
+            background-color: #1b5e20;
+        }
+        .registration-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            text-align: left;
+        }
+        .registration-form label {
+            font-weight: bold;
+            color: #333;
+        }
+        .registration-form input, .registration-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .input-group {
+            position: relative;
+        }
+        .input-group input, .input-group textarea {
+            padding-right: 40px;
+        }
+        .voice-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s;
+        }
+        .voice-icon:hover {
+            color: #2e7d32;
+        }
+        .registration-form button {
+            background-color: #4caf50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+        .registration-form button:hover {
+            background-color: #388e3c;
+        }
+        .location-section {
+            background-color: #f1f8e9;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .location-section h4 {
+            margin: 0 0 10px 0;
+            color: #1b5e20;
+        }
+        #find-location-btn {
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        #find-location-btn:hover {
+            background-color: #fb8c00;
+        }
+        #get-live-location-btn {
+            background-color: #1e88e5;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        #get-live-location-btn:hover {
+            background-color: #1565c0;
+        }
+        .camera-section {
+            background: #f1f8e9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .camera-section h4 {
+            color: #388e3c;
+            margin-top: 0;
+        }
+        #camera-feed {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border: 2px solid #2e7d32;
+            border-radius: 8px;
+            margin-top: 10px;
+            display: none;
+        }
+        #camera-controls {
+            margin-top: 10px;
+        }
+        #start-camera-btn, #capture-photo-btn {
+            background-color: #1e88e5;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+        #start-camera-btn:hover, #capture-photo-btn:hover {
+            background-color: #1565c0;
+        }
+        #captured-photo-preview {
+            margin-top: 15px;
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #2e7d32;
+            border-radius: 8px;
+            display: none;
+        }
+        footer {
+            background: #2e7d32;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .footer-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        .footer-icons a:hover {
+            color: #ffd54f;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="../images/agri.png" alt="AgriConnect Logo">
+        <div>
+            <h1>AgriConnect</h1>
+            <p>Empowering Farmers with Digital Solutions</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="sell.html">Sell Crops</a></li>
+            <li><a href="disease.html">Disease Detection</a></li>
+            <li><a href="labour.html">Hire Labour</a></li>
+            <li><a href="guide.html">Crop Guidance</a></li>
+            <li><a href="shop.html">Agri Shop</a></li>
+            <li><a href="todo.html">To-Do List</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2>Hire Agricultural Labour</h2>
+        <p>Find skilled labourers near you for all your farming needs.</p>
+
+        <div class="two-column-layout">
+            <div class="labour-list">
+                <h3>Available Labourers</h3>
+                
+                <div class="location-section">
+                    <h4>Find Labourers Near Me:</h4>
+                    <p id="location-info">Click the button below to allow location access.</p>
+                    <button id="find-location-btn">Find Labourers</button>
+                </div>
+                
+                <div id="labour-cards-container">
+                    <p id="loading-message">Click "Find Labourers" to see available workers.</p>
+                </div>
+            </div>
+
+            <div class="registration-form">
+                <h3>Register as a Labourer</h3>
+                <form id="registration-form">
+                    <div class="input-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                        <i class="fas fa-microphone voice-icon" data-target="name"></i>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="contact">Contact Number:</label>
+                        <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" required>
+                        <i class="fas fa-microphone voice-icon" data-target="contact"></i>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="location-reg">Location:</label>
+                        <input type="text" id="location-reg" name="location" required>
+                        <i class="fas fa-microphone voice-icon" data-target="location-reg"></i>
+                    </div>
+                    <button type="button" id="get-live-location-btn">Get My Live Location</button>
+
+                    <div class="input-group">
+                        <label for="skills">Skills (e.g., Ploughing, Seeding):</label>
+                        <textarea id="skills" name="skills" rows="3" required></textarea>
+                        <i class="fas fa-microphone voice-icon" data-target="skills"></i>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="price">Price (e.g., ₹500/day):</label>
+                        <input type="text" id="price" name="price" required>
+                        <i class="fas fa-microphone voice-icon" data-target="price"></i>
+                    </div>
+
+                    <div class="camera-section">
+                        <h4>Live Photo Capture</h4>
+                        <p>Capture a photo for your profile.</p>
+                        <video id="camera-feed" autoplay></video>
+                        <div id="camera-controls">
+                            <button type="button" id="start-camera-btn">Start Camera</button>
+                            <button type="button" id="capture-photo-btn" style="display:none;">Capture Photo</button>
+                        </div>
+                        <canvas id="photo-canvas" style="display:none;"></canvas>
+                        <img id="captured-photo-preview" src="#" alt="Captured Photo">
+                    </div>
+                    
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 AgriConnect. All rights reserved.</p>
+        <div class="footer-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // --- Simulated "Backend" Data ---
+        let allLabourers = JSON.parse(localStorage.getItem('allLabourers')) || [
+            { id: 1, name: "Ravi Kumar", contact: "9876543210", skills: "Ploughing, Seeding, Harvesting", price: "₹500/day", location: "Bannikuppe, Mandya", status: "old", bookedDates: ["2025-09-10", "2025-09-15"], photo: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" },
+            { id: 2, name: "Suresh Gowda", contact: "9988776655", skills: "Weeding, Pesticide Spraying, Irrigation", price: "₹450/day", location: "Arasinakere, Hassan", status: "old", bookedDates: ["2025-09-12", "2025-09-13"], photo: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" },
+            { id: 3, name: "Priya Sharma", contact: "9001122334", skills: "Organic Farming, Crop Management", price: "₹600/day", location: "Whitefield, Bangalore", status: "new", bookedDates: ["2025-09-20"], photo: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" },
+            { id: 4, name: "Arjun Singh", contact: "9123456789", skills: "Tractor Operation, Soil Testing", price: "₹800/day", location: "Srirangapatna, Mysore", status: "old", bookedDates: [], photo: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" },
+            { id: 5, name: "Lakshmi Devi", contact: "9234567890", skills: "Harvesting, Sorting, Packing", price: "₹400/day", location: "Bannikuppe, Mandya", status: "new", bookedDates: ["2025-09-16", "2025-09-17"], photo: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" },
+            { id: 6, name: "Kiran Patil", contact: "9345678901", skills: "Drip Irrigation Setup, Weeding", price: "₹550/day", location: "Arasinakere, Hassan", status: "old", bookedDates: ["2025-09-25"], photo: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" },
+        ];
+        
+        // Ensure initial data is saved if it's the first visit
+        if (!localStorage.getItem('allLabourers')) {
+            localStorage.setItem('allLabourers', JSON.stringify(allLabourers));
+        }
+
+        // --- Global Variables and DOM Elements ---
+        const locationInfo = document.getElementById('location-info');
+        const findLocationBtn = document.getElementById('find-location-btn');
+        const labourContainer = document.getElementById('labour-cards-container');
+        const registrationForm = document.getElementById('registration-form');
+        const getLiveLocationBtn = document.getElementById('get-live-location-btn');
+        const locationRegInput = document.getElementById('location-reg');
+        const cameraFeed = document.getElementById('camera-feed');
+        const startCameraBtn = document.getElementById('start-camera-btn');
+        const capturePhotoBtn = document.getElementById('capture-photo-btn');
+        const photoCanvas = document.getElementById('photo-canvas');
+        const capturedPhotoPreview = document.getElementById('captured-photo-preview');
+
+        // --- Simulated Reverse Geocoding Function ---
+        function getPlaceNameFromCoords(lat, lon) {
+            if (lat >= 12.7 && lat <= 12.8 && lon >= 77.0 && lon <= 77.1) {
+                return "Bannikuppe, Mandya";
+            } else if (lat >= 12.9 && lat <= 13.0 && lon >= 76.0 && lon <= 76.2) {
+                return "Arasinakere, Hassan";
+            } else {
+                return "Other Location";
+            }
+        }
+
+        // --- Geolocation for Farmer (Hiring Page) ---
+        findLocationBtn.addEventListener('click', () => {
+            if ("geolocation" in navigator) {
+                locationInfo.innerHTML = "Fetching your location... <strong>Please allow location access in the pop-up.</strong>";
+                labourContainer.innerHTML = `<p id="loading-message">Finding labourers near you...</p>`;
+
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const lat = position.coords.latitude;
+                        const lon = position.coords.longitude;
+                        const locationName = getPlaceNameFromCoords(lat, lon);
+                        
+                        if (locationName === "Other Location") {
+                            locationInfo.innerHTML = `Your location is outside our demo areas. Showing all labourers.`;
+                            displayLabourers(allLabourers);
+                        } else {
+                            locationInfo.innerHTML = `Your Location: <strong>${locationName}</strong>`;
+                            const nearbyLabourers = allLabourers.filter(labour => {
+                                return labour.location.includes(locationName.split(',')[1].trim());
+                            });
+                            displayLabourers(nearbyLabourers);
+                        }
+                    },
+                    (error) => {
+                        let errorMessage;
+                        switch(error.code) {
+                            case error.PERMISSION_DENIED:
+                                errorMessage = "Location access denied. Please manually enable it in your browser settings to use this feature.";
+                                break;
+                            case error.POSITION_UNAVAILABLE:
+                                errorMessage = "Location information is currently unavailable.";
+                                break;
+                            case error.TIMEOUT:
+                                errorMessage = "The request to get user location timed out.";
+                                break;
+                            default:
+                                errorMessage = "An unknown error occurred.";
+                        }
+                        locationInfo.textContent = errorMessage;
+                        labourContainer.innerHTML = `<p>${errorMessage}</p>`;
+                    },
+                    { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
+                );
+            } else {
+                locationInfo.textContent = "Geolocation is not supported by your browser.";
+                labourContainer.innerHTML = `<p>Geolocation is not supported by your browser.</p>`;
+            }
+        });
+
+        // --- Display Labourers ---
+        function displayLabourers(labourers) {
+            labourContainer.innerHTML = '';
+            if (labourers.length === 0) {
+                labourContainer.innerHTML = `<p>No labourers found near your location.</p>`;
+                return;
+            }
+
+            const shuffledLabourers = labourers.sort(() => 0.5 - Math.random());
+            const displayList = shuffledLabourers.slice(0, 6);
+
+            displayList.forEach(labour => {
+                const newLabourCard = `
+                    <div class="labour-card">
+                        ${labour.status === 'new' ? '<span class="status">NEW</span>' : ''}
+                        <h4>${labour.name}</h4>
+                        <p><strong>Skills:</strong> ${labour.skills}</p>
+                        <p><strong>Location:</strong> ${labour.location}</p>
+                        <p><strong>Contact:</strong> ${labour.contact}</p>
+                        <p class="price"><strong>Price:</strong> ${labour.price}</p>
+                        <button onclick="navigateToBookingPage(${labour.id})">Book Now</button>
+                    </div>
+                `;
+                labourContainer.innerHTML += newLabourCard;
+            });
+        }
+        
+        // Initial display of labourers on page load
+        displayLabourers(allLabourers);
+
+        // --- Navigation to Booking Page ---
+        function navigateToBookingPage(labourId) {
+            window.location.href = `booking.html?id=${labourId}`;
+        }
+
+        // --- Labourer Registration Form ---
+        getLiveLocationBtn.addEventListener('click', () => {
+            if ("geolocation" in navigator) {
+                locationRegInput.value = "Fetching live location...";
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const lat = position.coords.latitude;
+                        const lon = position.coords.longitude;
+                        const locationName = getPlaceNameFromCoords(lat, lon);
+                        if (locationName === "Other Location") {
+                            locationRegInput.value = `Lat: ${lat}, Lon: ${lon}`;
+                        } else {
+                            locationRegInput.value = locationName;
+                        }
+                    },
+                    (error) => {
+                        locationRegInput.value = "Location not allowed or unavailable.";
+                        alert("Location access denied or unavailable. Please manually enter your location.");
+                    }
+                );
+            } else {
+                locationRegInput.value = "Geolocation not supported.";
+            }
+        });
+
+        registrationForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const newLabour = {
+                id: allLabourers.length + 1,
+                name: document.getElementById('name').value,
+                contact: document.getElementById('contact').value,
+                skills: document.getElementById('skills').value,
+                price: document.getElementById('price').value,
+                location: document.getElementById('location-reg').value,
+                status: "new",
+                bookedDates: []
+            };
+
+            // Get the captured photo data
+            const capturedPhotoData = capturedPhotoPreview.src;
+            if (capturedPhotoData && capturedPhotoData !== "http://127.0.0.1:8000/src/pages/images/#" && capturedPhotoData !== "#" && capturedPhotoData.startsWith("data:image/")) {
+                newLabour.photo = capturedPhotoData;
+            } else {
+                newLabour.photo = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="; // default blank image
+            }
+            
+            allLabourers.push(newLabour);
+            
+            // Save the updated array to localStorage
+            localStorage.setItem('allLabourers', JSON.stringify(allLabourers));
+
+            displayLabourers(allLabourers);
+            this.reset();
+            alert("Registration successful! You will appear in the list when farmers search for labourers near your location.");
+        });
+
+        // --- Voice-to-Text Functionality ---
+        const voiceIcons = document.querySelectorAll('.voice-icon');
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+        if (SpeechRecognition) {
+            voiceIcons.forEach(icon => {
+                const recognition = new SpeechRecognition();
+                recognition.continuous = false;
+                recognition.lang = 'en-IN';
+
+                const targetInput = document.getElementById(icon.dataset.target);
+
+                icon.addEventListener('click', () => {
+                    recognition.start();
+                    targetInput.value = "Listening...";
+                    targetInput.style.color = "#ccc";
+                });
+
+                recognition.onresult = (event) => {
+                    const transcript = event.results[0][0].transcript;
+                    targetInput.value = transcript;
+                    targetInput.style.color = "#000";
+                };
+
+                recognition.onerror = (event) => {
+                    targetInput.value = "Error. Try again.";
+                    targetInput.style.color = "red";
+                };
+
+                recognition.onend = () => {
+                    if (targetInput.value === "Listening...") {
+                        targetInput.value = "";
+                        targetInput.style.color = "#000";
+                    }
+                };
+            });
+        } else {
+            voiceIcons.forEach(icon => icon.style.display = 'none');
+        }
+
+        // --- Live Camera Capture and Photo Saving ---
+        let stream;
+
+        startCameraBtn.addEventListener('click', async () => {
+            try {
+                if (!stream) {
+                    stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                    cameraFeed.srcObject = stream;
+                    cameraFeed.style.display = 'block';
+                    startCameraBtn.textContent = 'Camera is Active';
+                    capturePhotoBtn.style.display = 'inline-block';
+                    startCameraBtn.disabled = true;
+                }
+            } catch (err) {
+                console.error("Camera access denied or failed: ", err);
+                alert("Camera access was denied or an error occurred. Please ensure you have given permission to your browser.");
+            }
+        });
+
+        capturePhotoBtn.addEventListener('click', () => {
+            if (stream) {
+                const context = photoCanvas.getContext('2d');
+                photoCanvas.width = cameraFeed.videoWidth;
+                photoCanvas.height = cameraFeed.videoHeight;
+                context.drawImage(cameraFeed, 0, 0, photoCanvas.width, photoCanvas.height);
+                const imageDataUrl = photoCanvas.toDataURL('image/png');
+                capturedPhotoPreview.src = imageDataUrl;
+                capturedPhotoPreview.style.display = 'block';
+                
+                // Stop the camera feed
+                stream.getTracks().forEach(track => track.stop());
+                stream = null;
+                cameraFeed.srcObject = null;
+                cameraFeed.style.display = 'none';
+                startCameraBtn.textContent = 'Start Camera';
+                startCameraBtn.disabled = false;
+                capturePhotoBtn.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

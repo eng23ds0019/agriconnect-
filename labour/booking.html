@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Labour - AgriConnect</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4fdf4;
+        }
+        header {
+            background-color: #2e7d32;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+        header img {
+            height: 60px;
+        }
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+        header p {
+            font-size: 1.2em;
+            margin: 0;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background: #388e3c;
+            flex-wrap: wrap;
+        }
+        nav ul li {
+            margin: 15px 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ffd54f;
+        }
+        .container {
+            padding: 40px 20px;
+            text-align: center;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .container h2 {
+            font-size: 2.2em;
+            color: #2e7d32;
+            margin-bottom: 20px;
+        }
+        .booking-details-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            margin-bottom: 30px;
+        }
+        .booking-details-card h3 {
+            color: #388e3c;
+            font-size: 1.8em;
+            margin-top: 0;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .booking-details-card p {
+            margin: 10px 0;
+            font-size: 1.1em;
+            color: #4a4a4a;
+        }
+        .booking-details-card .price {
+            font-weight: bold;
+            color: #c62828;
+            font-size: 1.3em;
+        }
+        .labour-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #388e3c;
+            margin-bottom: 20px;
+        }
+        .booking-controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        .booking-controls button, .booking-controls a {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .booking-controls button:active, .booking-controls a:active {
+            transform: scale(0.98);
+        }
+        #book-now-btn {
+            background-color: #ff9800;
+            color: white;
+        }
+        #book-now-btn:hover {
+            background-color: #fb8c00;
+        }
+        #confirm-booking-btn {
+            background-color: #4caf50;
+            color: white;
+        }
+        #confirm-booking-btn:hover {
+            background-color: #388e3c;
+        }
+        #whatsapp-call-btn {
+            background-color: #25D366;
+            color: white;
+        }
+        #whatsapp-call-btn:hover {
+            background-color: #128C7E;
+        }
+        footer {
+            background: #2e7d32;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .footer-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        .footer-icons a:hover {
+            color: #ffd54f;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="../images/agri.png" alt="AgriConnect Logo">
+        <div>
+            <h1>AgriConnect</h1>
+            <p>Empowering Farmers with Digital Solutions</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="sell.html">Sell Crops</a></li>
+            <li><a href="disease.html">Disease Detection</a></li>
+            <li><a href="labour.html">Hire Labour</a></li>
+            <li><a href="guide.html">Crop Guidance</a></li>
+            <li><a href="shop.html">Agri Shop</a></li>
+            <li><a href="todo.html">To-Do List</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2>Booking Details</h2>
+        <p>Confirm the details of the labourer you wish to hire.</p>
+
+        <div class="booking-details-card" id="booking-details">
+            <h3>Labourer Details</h3>
+            <p>Labourer details loading...</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 AgriConnect. All rights reserved.</p>
+        <div class="footer-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const labourId = parseInt(params.get('id'));
+            const bookingDetailsCard = document.getElementById('booking-details');
+            const allLabourers = JSON.parse(localStorage.getItem('allLabourers')) || [];
+            
+            let labourer;
+
+            if (labourId) {
+                labourer = allLabourers.find(l => l.id === labourId);
+            }
+
+            if (labourer) {
+                bookingDetailsCard.innerHTML = `
+                    <h3>Labourer Details</h3>
+                    ${labourer.photo ? `<img src="${labourer.photo}" alt="Labourer Photo" class="labour-photo">` : ''}
+                    <p><strong>Name:</strong> ${labourer.name}</p>
+                    <p><strong>Skills:</strong> ${labourer.skills}</p>
+                    <p><strong>Location:</strong> ${labourer.location}</p>
+                    <p><strong>Contact:</strong> ${labourer.contact}</p>
+                    <p class="price"><strong>Price:</strong> ${labourer.price}</p>
+                    
+                    <div class="booking-controls">
+                        <button id="book-now-btn">Book Now</button>
+                        <button id="confirm-booking-btn">Confirm Booking</button>
+                        <a href="https://wa.me/${labourer.contact}" id="whatsapp-call-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Call on WhatsApp
+                        </a>
+                    </div>
+                `;
+
+                // Add event listeners to the new buttons
+                document.getElementById('book-now-btn').addEventListener('click', () => {
+                    alert('Booking has been initiated. You will receive a confirmation shortly.');
+                });
+
+                document.getElementById('confirm-booking-btn').addEventListener('click', () => {
+                    alert('Booking Confirmed! The labourer has been notified.');
+                });
+
+            } else {
+                bookingDetailsCard.innerHTML = "<p>Labourer not found.</p>";
+            }
+        });
+    </script>
+</body>
+</html>
