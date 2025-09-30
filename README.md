@@ -78,16 +78,4 @@ If you encounter any issues or have questions, please open an issue on this repo
 
 ---
 
-## 🔗 Live Demo
-
-[Your Live Demo URL here]
-
----
-
-## 🎉 Contribution
-
-Feel free to fork this project and send pull requests for improvements or additional features.
-
----
-
 © 2025 AgriConnect. Empowering Farmers with Digital Solutions.
