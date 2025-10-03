@@ -72,10 +72,4 @@
 
 ---
 
-## 📞 Support
-
-If you encounter any issues or have questions, please open an issue on this repository.
-
----
-
 © 2025 AgriConnect. Empowering Farmers with Digital Solutions.
